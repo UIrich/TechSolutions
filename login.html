@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechSolutions</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="login-page">
+    <main class="login-container" id="main-content">
+        <a href="index.php" class="voltar-link">&larr; Voltar para a página inicial</a>
+        <div class="login-header">
+            <h1>Acesso Restrito</h1>
+        </div>
+        <form id="loginForm" action="admin.php" method="post" aria-label="Formulário de login">
+            <div class="form-group">
+                <label for="usuario">Usuário</label>
+                <input type="name" id="usuario" name="usuario" placeholder="Digite seu usuário..." aria-required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha..." aria-required>
+            </div>
+        
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                Lembrar de mim
+            </label>
+        </div>
+        
+            <button type="submit" class="btn">Entrar</button>
+            <p id="error-message"></p>
+        </form>        
+    </main>
+    <script src="js/login.js"></script>
+</body>
+</html>
