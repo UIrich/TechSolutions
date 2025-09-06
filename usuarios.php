@@ -28,6 +28,7 @@ if (!isset($_SESSION['user_id'])) {
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
+                    <th scope="col">Cargo</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -46,6 +47,10 @@ if (!isset($_SESSION['user_id'])) {
             <input type="text" id="username" name="username" placeholder="Nome de usuário..." required>
             <input type="email" id="email" name="email" placeholder="E-mail..." required>
             <input type="password" id="senha" name="senha" placeholder="Senha..." required>
+            <select id="cargo" name="cargo" required>
+                <option value="user" selected>User</option>
+                <option value="admin">Admin</option>
+            </select>
 
             <button type="submit" class="btn">Salvar Usuário</button>
         </form>

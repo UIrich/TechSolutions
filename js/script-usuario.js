@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = form.username.value;
         const email = form.email.value;
         const senha = form.senha.value;
+        const cargo = form.cargo.value; 
 
         // Validação simples
-        if (!username || !email || !senha) {
+        if (!username || !email || !senha || !cargo) {
             document.getElementById("error-message").textContent = "Todos os campos são obrigatórios.";
             return;
         }
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("username", username);
         formData.append("email", email);
         formData.append("senha", senha);
+        formData.append("cargo", cargo); 
 
         const id = form.dataset.id;
         let url = "/techsolutions/backend/create-usuario.php";
@@ -73,8 +75,9 @@ function loadUsuarios() {
                     row.innerHTML = `
                         <td>${user.username}</td>
                         <td>${user.email}</td>
+                        <td>${user.cargo}</td>
                         <td>
-                            <a href="#" class="btn-small btn-blue" aria-label="Editar usuário ${user.username}" onclick="editUsuario(${user.id}, '${user.username}', '${user.email}')">Editar</a>
+                            <a href="#" class="btn-small btn-blue" aria-label="Editar usuário ${user.username}" onclick="editUsuario(${user.id}, '${user.username}', '${user.email}', '${user.cargo}')">Editar</a>
                             <a href="#" class="btn-small btn-red" aria-label="Apagar usuário ${user.username}" onclick="deleteUsuario(${user.id})">Apagar</a>
                         </td>
                     `;
@@ -91,10 +94,11 @@ function loadUsuarios() {
     xhr.send();
 }
 
-function editUsuario(id, username, email) {
+function editUsuario(id, username, email, cargo) {
     const form = document.getElementById("form-novo-usuario");
     form.username.value = username;
     form.email.value = email;
+    form.cargo.value = cargo; 
     form.dataset.id = id;
 }
 

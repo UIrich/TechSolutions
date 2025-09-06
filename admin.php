@@ -47,19 +47,25 @@ if ($result) {
         </nav>
     </header>
 
-    <main class="admin-dashboard" id="main-content" aria-label="Visão geral do painel administrativo">
-         <section class="card" role="region" aria-labelledby="usuarios-registrados">
-            <h3 id="usuarios-registrados">Usuários Registrados</h3>
-            <p class="numero"><?php echo $totalUsuarios; ?></p>
-        </section>
-        <section class="card" role="region" aria-labelledby="mensagens-recebidas">
-            <h3 id="mensagens-recebidas">Mensagens Recebidas</h3>
-            <p class="numero"><?php echo $totalMensagens; ?></p>
-        </section>
-        <section class="card" role="region" aria-labelledby="empresas-ativas">
-            <h3 id="empresas-ativas">Empresas Ativas</h3>
-            <p class="numero"><?php echo $totalEmpresas; ?></p>
-        </section>
-    </main>
+<main class="admin-dashboard" id="main-content" aria-label="Visão geral do painel administrativo">
+    <section class="welcome-message" role="region" aria-label="Mensagem de boas-vindas">
+        <h2>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+        <h3 align="center">É ótimo ter você de volta ao Painel Administrativo da TechSolutions.</h3>
+    </section>
+
+    <section class="card" role="region" aria-labelledby="usuarios-registrados">
+        <h3 id="usuarios-registrados">Usuários Registrados</h3>
+        <p class="numero"><?php echo $totalUsuarios; ?></p>
+    </section>
+    <section class="card" role="region" aria-labelledby="mensagens-recebidas">
+        <h3 id="mensagens-recebidas">Mensagens Recebidas</h3>
+        <p class="numero"><?php echo $totalMensagens; ?></p>
+    </section>
+    <section class="card" role="region" aria-labelledby="empresas-ativas">
+        <h3 id="empresas-ativas">Empresas Ativas</h3>
+        <p class="numero"><?php echo $totalEmpresas; ?></p>
+    </section>
+</main>
+
 </body>
 </html>

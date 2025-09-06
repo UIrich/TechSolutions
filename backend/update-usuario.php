@@ -5,13 +5,14 @@ $id = $_POST['id'];
 $username = $_POST['username'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
+$cargo = $_POST['cargo'];
 
 if ($senha) {
     $senha = md5($senha); 
 }
 
 $sql = "UPDATE usuarios 
-        SET username='$username', email='$email', senha='$senha' 
+        SET username='$username', email='$email', senha='$senha', cargo='$cargo' 
         WHERE id=$id";
 
 if ($conn->query($sql)) {

@@ -21,18 +21,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $passwordHash = md5($password);
 
     // Preparando a consulta
-    $stmt = $conn->prepare("SELECT id, username FROM usuarios WHERE username = ? AND senha = ?");
+    $stmt = $conn->prepare("SELECT id, username, cargo FROM usuarios WHERE username = ? AND senha = ?");
     $stmt->bind_param("ss", $username, $passwordHash);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($id, $user);
+        $stmt->bind_result($id, $user, $cargo);
         $stmt->fetch();
+
+        // Verifica se o cargo é admin
+        if ($cargo !== 'admin') {
+            echo json_encode([
+                "success" => false,
+                "message" => "Acesso negado. Apenas administradores podem acessar esta área."
+            ]);
+            $stmt->close();
+            $conn->close();
+            exit;
+        }
 
         // Login bem-sucedido: cria sessão
         $_SESSION['user_id'] = $id;
         $_SESSION['username'] = $user;
+        $_SESSION['cargo'] = $cargo;
 
         echo json_encode(["success" => true]);
     } else {
